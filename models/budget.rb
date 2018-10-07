@@ -1,9 +1,10 @@
-#require relative sql runner
+require_relative( '../db/sql_runner' )
 
 class Budget
 
-#attr reader
-#attr writer
+  attr_reader :id
+  attr_accessor :amount
+
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
