@@ -7,4 +7,6 @@ class TestCategory < MiniTest::Test
   def setup()
   end
 
+  
+
 end
