@@ -3,14 +3,14 @@ require_relative( '../db/sql_runner' )
 class Transaction
 
   attr_reader :id
-  attr_accessor :item,
+  attr_accessor :item
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @item = options['item']
-    @cost = options['cost'].to_i
-    @merchant_name = options['merchant_name']
-    @category_name = options['category_name']
+    @price = options['price']
+    @merchant_id = options['merchant_id']
+    @category_id = options['category_id']
     @date = options['date'].to_i #as a string, been told to stay away!
   end
 
@@ -24,16 +24,16 @@ class Transaction
     sql = "
     DELETE FROM transactions
     WHERE id = $1;"
-    values = [@id]
+    values = [id]
     SqlRunner.run(sql, values)
   end
 
   def save()
     sql = "
-    INSERT INTO transactions(item, cost, merchant_name, category_name, date)
+    INSERT INTO transactions(item, price, merchant_id, category_id, date)
     VALUES ($1, $2, $3, $4, $5)
     RETURNING id;"
-    values = [@item, @cost, @merchant_name, @category_name, @date]
+    values = [@item, @price, @merchant_id, @category_id, @date]
     new_transaction = SqlRunner.run(sql, values)[0]
     @id = new_transaction['id'].to_i
     #@category.total_spend increase
@@ -42,9 +42,9 @@ class Transaction
 
   def update()
     sql = "UPDATE transactions
-    SET (item, cost, merchant_name, category_name, date) = ($1, $2, $3, $4, $5)
+    SET (item, price, merchant_id, category_id, date) = ($1, $2, $3, $4, $5)
     WHERE id = $6"
-    values = [@item, @cost, @merchant_name, @category_name, @date, @id]
+    values = [@item, @price, @merchant_id, @category_id, @date, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -67,7 +67,7 @@ class Transaction
   end
 
   def self.span(from, to)
-    sql = "SELECT * FROM transaction
+    sql = "SELECT * FROM transactions
     WHERE date BETWEEN $1 AND $2;"
     values = [from.to_i, to.to_i]
     #IS THIS LINE CORRECT OR WRONG?!?!?!
@@ -76,12 +76,12 @@ class Transaction
     return answer_objects
   end
 
-  def count()
+  def self.count()
     sql = "
     SELECT * FROM transactions;"
     result_hashes = SqlRunner.run(sql)
     result_array = result_hashes.map { |e| Transaction.new(e)  }
-    rows = results_array.count
+    rows = result_array.count
     return rows
   end
 

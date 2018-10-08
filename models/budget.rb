@@ -9,7 +9,6 @@ class Budget
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @amount = options['amount'] !=nil ? options['amount'] : 0
-    #input amount of 0 when you start the app
   end
 
   def save()

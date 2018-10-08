@@ -8,8 +8,8 @@ class Category
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @name = options['name']
-    @total_spend = options['total_spend']= 0
-    #set total spend to be 0 from beginnnig
+    @total_spend = options['total_spend'] !=nil ? options['total_spend'] : 0
+    # i have set total spend to be 0 from beginnnig
   end
 
   def self.delete_all()
@@ -22,16 +22,16 @@ class Category
     sql = "
     DELETE FROM categories
     WHERE name = $1;"
-    values = [@name]
+    values = [name]
     SqlRunner.run(sql, values)
   end
 
   def save()
     sql = "INSERT INTO
-    categories(name)
-    VALUES ($1)
+    categories(name, total_spend)
+    VALUES ($1, $2)
     RETURNING id;"
-    values = [@name]
+    values = [@name, @total_spend]
     new_category = SqlRunner.run(sql, values)[0]
     @id = new_category['id'].to_i
   end
@@ -43,6 +43,27 @@ class Category
     result_array = result_hashes.map { |e| Category.new(e)  }
     return result_array
   end
+
+  def increase(amount_to_increase)
+    @total_spend += amount_to_increase
+    update
+  end
+
+
+  def decrease(amount_to_decrease)
+    @total_spend -= amount_to_decrease
+    update
+  end
+
+
+  def update()
+    sql = "UPDATE categories
+    SET (name, total_spend) = ($1, $2);"
+    values = [@name, @total_spend]
+    SqlRunner.run(sql, values)
+  end
+
+
 
 
 end
