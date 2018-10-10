@@ -1,0 +1,19 @@
+
+
+<h1>Update category <%= @category.name %></h1>
+
+
+  <form method="POST" action="/categories/<%= @category.id %>">
+    <label
+      for="first-input">Name: <%= @category.name %>; change to:
+    </label>
+    <input
+      type="text"
+      name="name"
+      value="<%= @category.name %>"
+      id="first-input"/>
+    <br>
+    <br>
+
+    <input type="submit" value="Update category"/>
+  </form>

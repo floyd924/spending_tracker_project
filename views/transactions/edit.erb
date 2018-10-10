@@ -1,0 +1,59 @@
+
+
+
+<h1>Update transaction #<%= @transaction.id %></h1>
+
+
+  <form method="POST" action="/transactions/<%= @transaction.id %>">
+    <label
+      for="first-input">Item: <%= @transaction.item %>; change to:
+    </label>
+    <input
+      type="text"
+      name="item"
+      value="<%= @transaction.item %>"
+      id="first-input"/>
+    <br>
+    <br>
+    <label
+      for="second-input">Price: <%= @transaction.price %>; change to:
+    </label>
+    <input
+      type="text"
+      name="price"
+      value="<%= @transaction.price %>"
+      id="second-input"/>
+    <br>
+    <br>
+    <label
+      for="third-input">Merchant: <%= @transaction.merchant.name %>; change to:
+    </label>
+    <select name="merchant_id" value="<%= @transaction.merchant.name %>" id="third_input">
+      <% for merchant in @merchants %>
+      <option value="<%=  merchant.id %>"><%= merchant.name %></option>
+      <% end %>
+    </select>
+    <br>
+    <br>
+    <label
+    for="fourth-input">Category: <%= @transaction.category.name %>; change to:
+    </label>
+    <select name="category_id" value="<%= @transaction.category.name %>" id="fourth_input">
+      <% for category in @categories %>
+      <option value="<%=  category.id %>"><%= category.name %></option>
+      <% end %>
+    </select>
+    <br>
+    <br>
+    <label
+      for="fifth-input">Date: <%= @transaction.date %>; change to:
+    </label>
+    <input
+      type="text"
+      name="date"
+      value="<%= @transaction.date %>"
+      id="fifth-input"/>
+    <br>
+    <br>
+    <input type="submit" value="Update transaction"/>
+  </form>

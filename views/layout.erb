@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iains Transaction Checker Thingy</title>
+    <link rel="stylesheet" type="text/css" href="/styles/structure.css">
+  </head>
+
+
+
+  <body>
+
+
+
+    <main>
+      <div class="grid">
+        <div class="navbar">
+          <a href="/transactions">
+            <div class="logo_home">
+
+            </div>
+          </a>
+          <nav>
+            <ul>
+              <li>
+                <a href="/transactions">Home</a>
+              </li>
+              <li>
+                <a href="/transactions/new">Add new transaction</a>
+              </li>
+              <li>
+                <a href="/budgets">Update budget</a>
+              </li>
+              <li>
+                <a href="/categories">Categories</a>
+              </li>
+              <li>
+                <a href="/merchants">Merchants</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="topbar">
+          <div class="budget_section"><p> Budget: <%= @budget1.amount %></p>
+          <p> <form method="GET" action="/budgets">
+            <input type="submit" value="Update Budget"/>
+          </form>
+          </div>
+          <br><br>
+
+        </div>
+        <div class="logo">
+        </div>
+        <div class="adbar">
+        </div>
+        <div class="main_content">
+          <%= yield %>
+        </div>
+
+      </div>
+    </main>
+
+    <footer>&copy footer goes here</footer>
+
+  </body>
+</html>

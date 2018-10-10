@@ -1,0 +1,36 @@
+
+
+<h1>Categories</h1>
+
+<form method="GET" action="/categories/new">
+  <input type="submit" value="Create New Category"/>
+</form>
+
+<table>
+  <tr>
+    <th>id #</th>
+    <th>Name</th>
+    <th>Total Expenditure</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% for batman in @categories %>
+  <tr>
+    <td><a href="/categories/<%= batman.id %>"><%= batman.id %></a></td>
+    <td><a href="/categories/<%= batman.id %>"><%= batman.name %></a></td>
+    <td><%= batman.total_spend %></td>
+    <td>
+      <form method="GET" action="/categories/<%= batman.id %>/edit">
+        <input type="submit" value="Edit"/>
+      </form>
+    </td>
+    <td>
+      <form method="POST" action="/categories/<%= batman.id %>/delete">
+        <input type="submit" value="Delete"/>
+      </form>
+    </td>
+  </tr>
+
+
+  <% end %>
+</table>

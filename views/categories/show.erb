@@ -1,0 +1,25 @@
+
+
+<p>Viewing all transactions in the category</p>
+<h1><%= @category.name %></h1>
+
+<table>
+  <tr>
+    <th>id #</th>
+    <th>Item</th>
+    <th>Price</th>
+    <th>Merchant</th>
+    <th>Date</th>
+  </tr>
+  <% for batman in @transactions %>
+  <tr>
+    <td><a href="/transactions/<%= batman.id %>"><%= batman.id %></a></td>
+    <td><%= batman.item %></td>
+    <td><%= batman.price %></td>
+    <td> <%=  batman.merchant.name %> </td>
+    <td><%= batman.date %></td>
+  </tr>
+
+
+  <% end %>
+</table>

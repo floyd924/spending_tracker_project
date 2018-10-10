@@ -1,0 +1,155 @@
+p {
+    font-family: 'lucida grande';
+}
+
+ul {
+  padding: 5px;
+  padding-top: 5px;
+  /* padding-top: 0px; */
+  /* border: solid white 1px; */
+  padding-bottom: 800px;
+
+}
+
+li {
+  border: solid white 3px;
+  border-radius: 3px;
+  color: white;
+  font-family: 'lucida grande';
+  margin: 10px;
+  padding: 12px;
+  text-align: center;
+  list-style: none;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+li a {
+  color: white;
+  font-family: 'lucida grande';
+}
+
+.budget_section {
+  background-color: #dfe3ee;
+  border: 2px solid silver;
+  border-radius: 20px;
+  width: 200px;
+  text-align: center;
+  margin-top: 40px;
+  margin-left: 50px;
+}
+
+.logo_home {
+  align-items: center;
+  position: center;
+  background-color: #8b9dc3;
+  background-image: url('/images/logo9.jpg');
+  border: 2px solid black;
+  margin-left: 40px;
+  margin-top: 35px;
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+  z-index: 10;
+  padding-bottom: -100px;
+}
+
+/* @keyframes advert {
+  0%   {background-image: url('/images/one.jpg');}
+  25%  {background-image: url('/images/two.jpg');
+  50%  {background-image: url('/images/three.jpg')};
+  100% {background-image: url('/images/one.jpg')};
+} */
+
+/* @keyframes advert {
+    0%   {background-color: black;}
+    25%  {background-color: silver;}
+    50%  {background-color: blue;}
+    100% {background-color: green;}
+} */
+
+.grid {
+	display: grid;
+	width: 100%;
+  height: 800px;
+  /* grid-template-columns: 10%, 10%, repeat(6, 1fr), 10%, 10%; */
+  grid-template-columns: repeat(10, 10%);
+  grid-template-rows: repeat(10, 10%);
+}
+
+.grid .navbar {
+  background-color: #3b5998;
+  border: solid #dfe3ee 1px;
+  grid-row-start: 1;
+  grid-row-end: 10;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  z-index: 5;
+}
+
+/* .grid .logo {
+  background-image: url('/images/pic7.jpg');
+
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  z-index: 2;
+
+} */
+
+.grid .topbar {
+  background-color: #3b5998;
+  border: solid #dfe3ee 1px;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 3;
+  grid-column-end: 10;
+}
+
+.grid .adbar {
+  /* background-image: url('/images/one.jpg'); */
+
+  /* background-color: black;
+  animation-name: advert;
+  animation-duration: 10s;
+  animation-iteration-count: infinite; */
+  background-image: url('/images/pic8.jpg');
+  background-size: contain;
+  grid-row-start: 3;
+  grid-row-end: 10;
+  grid-column-start: 8;
+  grid-column-end: 10;
+}
+
+.grid .main_content {
+  background-color: silver;
+  grid-row-start: 3;
+  grid-row-end: 10;
+  grid-column-start: 3;
+  grid-column-end: 8;
+  text-align: center;
+}
+
+table {
+  /* padding-left: 10%; */
+  width: 90%;
+  padding-left: 5%;
+  text-align: center;
+  position: center;
+
+}
+
+table,
+p {
+    font-family: 'lucida grande';
+}
+
+td {
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 2px;
+  /* margin: 50px; */
+}

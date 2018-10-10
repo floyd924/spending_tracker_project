@@ -1,0 +1,19 @@
+
+<h1>Details for transaction #<%= @transaction.id %></h1>
+<p> Item: <%= @transaction.item %>;</p>
+<p> Price: <%= @transaction.price %>;</p>
+<p> Date: <%= @transaction.date %>;</p>
+
+<p> Merchant: <%= @transaction.merchant.name %>;</p>
+
+<p> Category: <%= @transaction.category.name %>;</p>
+
+
+<form method="POST" action="/transactions/<%= @transaction.id %>/delete">
+  <input type="submit" value="Delete Transaction"/>
+</form>
+<!-- refund if deleted -->
+
+<form method="GET" action="/transactions/<%= @transaction.id %>/edit">
+  <input type="submit" value="Edit"/>
+</form>

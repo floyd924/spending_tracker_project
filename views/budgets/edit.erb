@@ -1,0 +1,14 @@
+<p>Budget currently has: <%= @budget1.amount %></p>
+
+<form method="POST" action="/budgets">
+  <label
+    for="first-input">Amount to add:
+  </label>
+  <input
+    type="integar"
+    name="amount"
+    id="first-input"/>
+  <br>
+  <br>
+  <input type="submit" value="Add to budget"/>
+</form>

@@ -1,0 +1,57 @@
+
+
+
+
+  <h1>Add a new transaction</h1>
+
+
+<form method="POST" action="/transactions">
+  <label
+  for="first-input">Item:
+  </label>
+  <input
+    type="text"
+    name="item"
+    id="first-input"/>
+  <br>
+  <br>
+  <label
+    for="second-input">Price:
+  </label>
+  <input
+    type="text"
+    name="price"
+    id="second-input"/>
+  <br>
+  <br>
+  <label
+    for="third-input">Merchant:
+  </label>
+  <select name="merchant_id" id="third_input">
+    <% for merchant in @merchants %>
+    <option value="<%=  merchant.id %>"><%= merchant.name %></option>
+    <% end %>
+  </select>
+  <br>
+  <br>
+  <label
+  for="fourth-input">Category:
+  </label>
+  <select name="category_id" id="fourth_input">
+    <% for category in @categories %>
+    <option value="<%=  category.id %>"><%= category.name %></option>
+    <% end %>
+  </select>
+  <br>
+  <br>
+  <label
+    for="fifth-input">Date:
+  </label>
+  <input
+    type="text"
+    name="date"
+    id="fifth-input"/>
+  <br>
+  <br>
+  <input type="submit" value="Add Transaction"/>
+</form>

@@ -1,0 +1,36 @@
+
+
+<h1>Merchants</h1>
+
+<form method="GET" action="/merchants/new">
+  <input type="submit" value="Create New Merchant"/>
+</form>
+
+<table>
+  <tr>
+    <th>id #</th>
+    <th>Name</th>
+    <th>Total Expenditure</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% for batman in @merchants %>
+  <tr>
+    <td><a href="/merchants/<%= batman.id %>"><%= batman.id %></a></td>
+    <td><a href="/merchants/<%= batman.id %>"><%= batman.name %></a></td>
+    <td><%= batman.total_spend %></td>
+    <td>
+      <form method="GET" action="/merchants/<%= batman.id %>/edit">
+        <input type="submit" value="Edit"/>
+      </form>
+    </td>
+    <td>
+      <form method="POST" action="/merchants/<%= batman.id %>/delete">
+        <input type="submit" value="Delete"/>
+      </form>
+    </td>
+  </tr>
+
+
+  <% end %>
+</table>
