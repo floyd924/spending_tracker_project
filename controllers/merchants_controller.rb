@@ -51,6 +51,11 @@ end
 post("/merchants/:id/delete") do
   @budget1 = Budget.all
   id = params[:id].to_i
+
+  @merch = Merchant.find(id)
+  spend = @merch.total_spend.to_i
+
+  @budget1.add(spend)
   Merchant.delete_with_id(id)
   erb(:"merchants/delete")
 end

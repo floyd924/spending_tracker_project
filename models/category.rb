@@ -9,7 +9,6 @@ class Category
     @id = options['id'].to_i if options['id']
     @name = options['name'].capitalize
     @total_spend = options['total_spend'] !=nil ? options['total_spend'] : 0
-    # i have set total spend to be 0 from beginnnig
   end
 
   def self.delete_all()
@@ -53,10 +52,10 @@ class Category
   end
 
 
-  def increase(amount_to_increase)
-    @total_spend += amount_to_increase
-    update
-  end
+  # def increase(amount_to_increase)
+  #   @total_spend += amount_to_increase
+  #   update
+  # end
 
   def add(amount_to_add)
     prev_amount = @total_spend.to_i
@@ -75,16 +74,17 @@ class Category
   end
 
 
-  def decrease(amount_to_decrease)
-    @total_spend -= amount_to_decrease
-    update
-  end
+  # def decrease(amount_to_decrease)
+  #   @total_spend -= amount_to_decrease
+  #   update
+  # end
 
 
   def update()
     sql = "UPDATE categories
-    SET (name, total_spend) = ($1, $2);"
-    values = [@name, @total_spend]
+    SET (name, total_spend) = ($1, $2)
+    WHERE id = $3;"
+    values = [@name, @total_spend, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -101,32 +101,32 @@ class Category
     return category_object[0].id
   end
 
-  def self.increase_with_id(id, amount)
-    a = id.to_i
-    sql = "SELECT * FROM categories
-    WHERE id = $1;"
-    values = [a]
-    category_hash = SqlRunner.run(sql, values)
-    # binding.pry
-    array = category_hash.map { |e| Category.new(e)  }
-    object = array[0]
-    # binding.pry
-    c = object.total_spend.to_i
-    c += amount
-    # binding.pry
+  # def self.increase_with_id(id, amount)
+  #   a = id.to_i
+  #   sql = "SELECT * FROM categories
+  #   WHERE id = $1;"
+  #   values = [a]
+  #   category_hash = SqlRunner.run(sql, values)
+  #   # binding.pry
+  #   array = category_hash.map { |e| Category.new(e)  }
+  #   object = array[0]
+  #   # binding.pry
+  #   c = object.total_spend.to_i
+  #   c += amount
+  #   # binding.pry
+  #
+  #   object.update
+  # end
 
-    object.update
-  end
-
-  def self.exists(name_to_check)
-    sql = "SELECT * FROM categories
-    WHERE name = $1;"
-    values = [name_to_check.capitalize]
-    result = SqlRunner.run(sql, values)
-
-    array = result.map { |e| Category.new(e) }
-    binding.pry
-  end
+  # def self.exists(name_to_check)
+  #   sql = "SELECT * FROM categories
+  #   WHERE name = $1;"
+  #   values = [name_to_check.capitalize]
+  #   result = SqlRunner.run(sql, values)
+  #
+  #   array = result.map { |e| Category.new(e) }
+  #   binding.pry
+  # end
 
   def self.find(id)
     sql = "

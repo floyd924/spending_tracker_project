@@ -49,6 +49,11 @@ end
 post("/categories/:id/delete") do
   @budget1 = Budget.all
   id = params[:id].to_i
+
+  @cat = Category.find(id)
+  spend = @cat.total_spend.to_i
+
+  @budget1.add(spend)
   Category.delete_with_id(id)
   erb(:"categories/delete")
 end

@@ -1,3 +1,15 @@
+body {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  height: 100%;
+  /* align-items: center; */
+  /* position: center; */
+}
+
+.button {
+
+}
+
 p {
     font-family: 'lucida grande';
 }
@@ -29,6 +41,10 @@ li {
 li a {
   color: white;
   font-family: 'lucida grande';
+}
+
+.warning {
+  color: red;
 }
 
 .budget_section {
@@ -63,16 +79,11 @@ li a {
   100% {background-image: url('/images/one.jpg')};
 } */
 
-/* @keyframes advert {
-    0%   {background-color: black;}
-    25%  {background-color: silver;}
-    50%  {background-color: blue;}
-    100% {background-color: green;}
-} */
+
 
 .grid {
 	display: grid;
-	width: 100%;
+	width: 110%;
   height: 800px;
   /* grid-template-columns: 10%, 10%, repeat(6, 1fr), 10%, 10%; */
   grid-template-columns: repeat(10, 10%);
@@ -87,6 +98,9 @@ li a {
   grid-column-start: 1;
   grid-column-end: 3;
   z-index: 5;
+  border-bottom: solid 3px black;
+  border-left: solid 3px black;
+  border-top: solid 3px black;
 }
 
 /* .grid .logo {
@@ -107,21 +121,22 @@ li a {
   grid-row-end: 3;
   grid-column-start: 3;
   grid-column-end: 10;
+  border-top: solid 3px black;
+  border-right: solid 3px black;
 }
 
 .grid .adbar {
   /* background-image: url('/images/one.jpg'); */
 
-  /* background-color: black;
-  animation-name: advert;
-  animation-duration: 10s;
-  animation-iteration-count: infinite; */
+
   background-image: url('/images/pic8.jpg');
-  background-size: contain;
+  background-size: cover;
   grid-row-start: 3;
   grid-row-end: 10;
   grid-column-start: 8;
   grid-column-end: 10;
+  border-bottom: solid 3px black;
+
 }
 
 .grid .main_content {
@@ -131,7 +146,38 @@ li a {
   grid-column-start: 3;
   grid-column-end: 8;
   text-align: center;
+  border-bottom: solid 3px black;
 }
+
+@keyframes anim {
+    0%   {background-color: black;}
+    20%  {background-color: darkblue;}
+    40%  {background-color: grey;}
+    60%  {background-color: darkgreen;}
+    80%  {background-color: darkred;}
+    100% {background-color: black;}
+}
+
+
+
+footer {
+  width: 100%;
+  background-color: black;
+  animation-name: anim;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  color: yellow;
+  font-style: italic;
+  font-weight: 700;
+  margin-top: -50px;
+  margin-bottom: 0px;
+}
+
+/* footer p {
+  color: yellow;
+  font-style: italic;
+  font-weight: 700;
+} */
 
 table {
   /* padding-left: 10%; */
@@ -142,9 +188,9 @@ table {
 
 }
 
-table,
-p {
-    font-family: 'lucida grande';
+table {
+    /* font-family: 'lucida grande'; */
+
 }
 
 td {
@@ -152,4 +198,9 @@ td {
   border-radius: 5px;
   padding: 2px;
   /* margin: 50px; */
+}
+
+tfoot {
+  background-color: lightslategrey;
+  border: 3px solid black;
 }

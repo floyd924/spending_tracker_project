@@ -13,8 +13,10 @@
     type="text"
     name="item"
     id="first-input"/>
+
   <br>
   <br>
+
   <label
     for="second-input">Price:
   </label>
@@ -22,8 +24,10 @@
     type="text"
     name="price"
     id="second-input"/>
+
   <br>
   <br>
+
   <label
     for="third-input">Merchant:
   </label>
@@ -33,7 +37,11 @@
     <% end %>
   </select>
   <br>
+
+
   <br>
+  <br>
+
   <label
   for="fourth-input">Category:
   </label>
@@ -42,8 +50,12 @@
     <option value="<%=  category.id %>"><%= category.name %></option>
     <% end %>
   </select>
+
+
+
   <br>
   <br>
+
   <label
     for="fifth-input">Date:
   </label>
@@ -51,7 +63,26 @@
     type="text"
     name="date"
     id="fifth-input"/>
+
   <br>
   <br>
+  <br>
+
   <input type="submit" value="Add Transaction"/>
+</form>
+
+<br>
+
+<hr></hr>
+
+<br>
+
+<form method="GET" action="/merchants/new">
+  <input type="submit" value="Create New Merchant"/>
+</form>
+
+<br>
+
+<form method="GET" action="/categories/new">
+  <input type="submit" value="Create New Category"/>
 </form>

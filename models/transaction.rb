@@ -13,8 +13,11 @@ class Transaction
     @price = options['price']
     @merchant_id = options['merchant_id'].to_i
     @category_id = options['category_id'].to_i
+    # @date = options["date"] !=nil ? options["total_spend"] : DateTime.now
     @date = options['date'].to_i #as a string, been told to stay away!
   end
+
+
 
   def merchant()
     sql = "SELECT * FROM merchants
@@ -78,6 +81,17 @@ class Transaction
     SELECT * FROM transactions
     ORDER BY date DESC;"
     result_hashes = SqlRunner.run(sql)
+    result_array = result_hashes.map { |e| Transaction.new(e)  }
+    return result_array
+  end
+
+  def self.filter(a, b)
+    sql = "
+    SELECT * FROM transactions
+    WHERE date BETWEEN $1 AND $2
+    ORDER BY date DESC;"
+    values = [a, b]
+    result_hashes = SqlRunner.run(sql, values)
     result_array = result_hashes.map { |e| Transaction.new(e)  }
     return result_array
   end
@@ -169,14 +183,6 @@ class Transaction
     return result_array[0].price.to_i
   end
 
-  # def self.find_by_category_id(id)
-  #   sql = "SELECT * FROM transactions
-  #   WHERE category_id = $1;"
-  #   values = [id]
-  #   results = SqlRunner.run(sql, values)
-  #   result_array = results.map { |e| Category.new(e) }
-  #   return result_array
-  # end
 
 
 end

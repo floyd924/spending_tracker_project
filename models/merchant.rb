@@ -44,8 +44,9 @@ class Merchant
   def update()
     sql = "UPDATE merchants
     SET (name, total_spend) = ($1, $2)
+    WHERE id = $3;
     "
-    values = [@name, @total_spend]
+    values = [@name, @total_spend, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -57,15 +58,15 @@ class Merchant
   end
 
 
-  def increase(amount)
-    @total_spend += amount
-    update
-  end
-
-  def decrease(amount)
-    @total_spend -= amount
-    update
-  end
+  # def increase(amount)
+  #   @total_spend += amount
+  #   update
+  # end
+  #
+  # def decrease(amount)
+  #   @total_spend -= amount
+  #   update
+  # end
 
   def add(amount_to_add)
     prev_amount = @total_spend.to_i
@@ -82,7 +83,7 @@ class Merchant
     #prompt savings
     update
   end
-  
+
   def self.return_id(name)
     name.capitalize!
     sql = "

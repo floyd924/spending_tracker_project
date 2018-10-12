@@ -6,20 +6,34 @@ require_relative("../models/category.rb")
 require_relative("../models/budget.rb")
 
 
-get '/budgets' do
+get("/budgets") do
   @budget1 = Budget.all
-  "Hello World"
+  erb(:"budgets/edit")
 end
-
-# get("/budgets/budget1/edit") do
-#   "hello world"
-#   # erb(:"budgets/edit")
-# end
 
 post("/budgets") do
+  # "hello world"
+  amount = params[:amount].to_i
   @budget1 = Budget.all
-  "hello world"
-  # amount = params(amount).to_i
-  # @budget1.add(amount)
-  # erb(:"budgets/update")
+  @budget1.add(amount)
+  erb(:"budgets/update")
 end
+
+
+# get '/budgets' do
+#   @budget1 = Budget.all
+#   "Hello World"
+# end
+#
+# # get("/budgets/budget1/edit") do
+# #   "hello world"
+# #   # erb(:"budgets/edit")
+# # end
+
+# post("/budgets") do
+#   @budget1 = Budget.all
+#   "hello world"
+#   # amount = params(amount).to_i
+#   # @budget1.add(amount)
+#   # erb(:"budgets/update")
+# end
